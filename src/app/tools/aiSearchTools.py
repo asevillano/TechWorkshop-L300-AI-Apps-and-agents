@@ -18,7 +18,7 @@ EMBEDDING_ENDPOINT = os.environ.get("embedding_endpoint")
 EMBEDDING_DEPLOYMENT = os.environ.get("embedding_deployment")
 EMBEDDING_API_VERSION = os.environ.get("embedding_api_version")
 
-credential = DefaultAzureCredential()
+credential = DefaultAzureCredential(process_timeout=30)
 
 # Validate required Cosmos env vars
 if not COSMOS_ENDPOINT:

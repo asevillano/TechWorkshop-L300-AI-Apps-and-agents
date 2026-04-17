@@ -36,7 +36,7 @@ var tags = {
 
 // Ensure the current resource group has the required tag via a subscription-scoped module
 module updateRgTags 'updateRgTags.bicep' = {
-  name: 'updateRgTags'
+  name: 'updateRgTags-${resourceGroup().location}'
   scope: subscription()
   params: {
     rgName: resourceGroup().name
