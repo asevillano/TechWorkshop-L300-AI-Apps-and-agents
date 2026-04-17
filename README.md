@@ -6,6 +6,30 @@ This lab teaches you how to design and build AI applications and agents using Mi
 
 The step by step instructions for this lab can be found in the [AI Apps and agents guide](https://microsoft.github.io/TechWorkshop-L300-AI-Apps-and-agents).
 
+## CI/CD: Build & Deploy Workflow
+
+The workflow at `.github/workflows/build-and-deploy.yml` automatically builds the Docker image from the `src/` folder, pushes it to Azure Container Registry, and updates the Azure Container App on every push to `main`.
+
+### Required GitHub Secrets
+
+| Secret name | Description |
+|---|---|
+| `AZURE_CREDENTIALS` | Service principal JSON used by `azure/login` (output of `az ad sp create-for-rbac --sdk-auth`) |
+| `FOUNDRY_ENDPOINT` | Microsoft Foundry endpoint URL |
+| `gpt_endpoint` | GPT model endpoint URL |
+| `embedding_endpoint` | Embedding model endpoint URL |
+| `phi_4_endpoint` | Phi-4 model endpoint URL |
+
+### Required GitHub Variables (repository-level `vars.*`)
+
+| Variable name | Description |
+|---|---|
+| `ACR_NAME` | Azure Container Registry name (e.g. `myregistry`) |
+| `ACR_LOGIN_SERVER` | ACR login server (e.g. `myregistry.azurecr.io`) |
+| `IMAGE_NAME` | Image name inside the registry (e.g. `myapp`) |
+| `CONTAINER_APP_NAME` | Name of the Azure Container App to update |
+| `RESOURCE_GROUP` | Azure resource group containing the Container App |
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
